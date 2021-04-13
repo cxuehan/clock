@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+
+    context.save();
+    context.translate(400, 400);
+    context.arc(0, 0, 300, 0, 360*Math.PI/180);
+    context.strokeStyle = "	PaleVioletRed";
+    context.lineWidth = 10;
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.translate(400, 400);
+    context.fillRect(270, -2, 18, 4);
+    for(var i = 0; i<59; i++){
+        context.rotate(6*Math.PI/180);
+        context.fillRect(270, -2, 18, 4);
+    }
+    context.restore();
+
+    context.save();
+    context.translate(400, 400);
+    context.fillStyle = "Gold";
+    context.fillRect(260, -2, 28, 4);
+    for(var i = 0; i<11; i++){
+        context.rotate(30*Math.PI/180);
+        context.fillRect(260, -2, 28, 4);
+    }
+    context.restore();
+
+    context.save();
+    context.translate(400, 400);
+    context.beginPath();
+    for(var i = 1; i<13; i++){
+        context.font = "30px 隶书";
+        context.fillStyle = "	DimGray";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.shadowColor = "gray";
+        context.shadowBlur = 2;
+        context.shadowOffsetX = 3;
+        context.shadowOffsetY = 3;
+        context.fillText(i, 240*Math.cos(((15-i)%12)*30*Math.PI/180), -240*Math.sin(((15-i)%12)*30*Math.PI/180));
+    }
+    context.restore();
+
+    context.save();
+    context.translate(400, 400);
+    context.beginPath();
+    context.arc(0, 0, 12, 0, 360*Math.PI/180);
+    context.fillStyle = "	MediumVioletRed";
+    context.fill();
+    context.restore();
+
+    setInterval(function(){
+        clearArc();
+        context.save();
+        context.translate(400, 400);    
+        context.beginPath();
+        context.arc(0, 0, 12, 0, 360*Math.PI/180);
+        context.fillStyle = "	MediumVioletRed";
+        context.fill();
+
+        var date = new Date();
+        var second = date.getSeconds();
+        var minute = date.getMinutes();
+        var hour = date.getHours();
+        console.log(hour);
+        
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(200*Math.cos(((75-second)%60)*6*Math.PI/180), -200*Math.sin(((75-second)%60)*6*Math.PI/180));
+        context.strokeStyle = "SaddleBrown";
+        context.lineWidth = 3;
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(160*Math.cos((((75-minute)%60)*6-(6*second/60))*Math.PI/180), -160*Math.sin((((75-minute)%60)*6-(6*second/60))*Math.PI/180));
+        context.strokeStyle = "		LightCoral";
+        context.lineWidth = 5;
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(100*Math.cos((((15-hour)%12)*30-(30*minute/60))*Math.PI/180), -100*Math.sin((((15-hour)%12)*30-(30*minute/60))*Math.PI/180));
+        context.strokeStyle = "		Tomato";
+        context.lineWidth = 8;
+        context.stroke();
+
+        context.restore();
+    },1000)
+    
+
+
+    function clearArc(){
+        context.save();
+        context.translate(400, 400);
+        for(var i = 0; i<360; i++){
+            context.clearRect(0, 0, 220, 5);
+            context.rotate(Math.PI/180);
+        }
+        context.restore();
+    }
+</script>
+</html>
