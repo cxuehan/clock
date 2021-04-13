@@ -16,6 +16,10 @@
     context.save();
     context.translate(400, 400);
     context.arc(0, 0, 300, 0, 360*Math.PI/180);
+    context.shadowColor = "gray";
+    context.shadowBlur = 5;
+    context.shadowOffsetX = 5;
+    context.shadowOffsetY = 5;
     context.strokeStyle = "	PaleVioletRed";
     context.lineWidth = 10;
     context.stroke();
@@ -62,6 +66,7 @@
     context.arc(0, 0, 12, 0, 360*Math.PI/180);
     context.fillStyle = "	MediumVioletRed";
     context.fill();
+
     context.restore();
 
     setInterval(function(){
@@ -72,12 +77,19 @@
         context.arc(0, 0, 12, 0, 360*Math.PI/180);
         context.fillStyle = "	MediumVioletRed";
         context.fill();
+        context.beginPath();
+        context.font = "50px 隶书";
+        context.shadowColor = "gray";
+        context.shadowBlur = 5;
+        context.shadowOffsetX = 8;
+        context.shadowOffsetY = 8;
+        context.fillStyle = "BurlyWood";
+        context.fillText("霍仕伟", -70, -70);
 
         var date = new Date();
         var second = date.getSeconds();
         var minute = date.getMinutes();
         var hour = date.getHours();
-        console.log(hour);
         
         context.beginPath();
         context.moveTo(0, 0);
@@ -89,14 +101,14 @@
         context.beginPath();
         context.moveTo(0, 0);
         context.lineTo(160*Math.cos((((75-minute)%60)*6-(6*second/60))*Math.PI/180), -160*Math.sin((((75-minute)%60)*6-(6*second/60))*Math.PI/180));
-        context.strokeStyle = "		LightCoral";
+        context.strokeStyle = "			RosyBrown";
         context.lineWidth = 5;
         context.stroke();
 
         context.beginPath();
         context.moveTo(0, 0);
         context.lineTo(100*Math.cos((((15-hour)%12)*30-(30*minute/60))*Math.PI/180), -100*Math.sin((((15-hour)%12)*30-(30*minute/60))*Math.PI/180));
-        context.strokeStyle = "		Tomato";
+        context.strokeStyle = "			LightCoral";
         context.lineWidth = 8;
         context.stroke();
 
