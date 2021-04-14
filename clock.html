@@ -90,12 +90,31 @@
         var second = date.getSeconds();
         var minute = date.getMinutes();
         var hour = date.getHours();
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        var day = date.getDate();
+
+        context.beginPath();
+        context.moveTo(-80, 70);
+        context.lineTo(80, 70);
+        context.lineTo(80, 120);
+        context.lineTo(-80, 120);
+        context.lineTo(-80, 70);
+        context.lineTo(80, 70);
+        context.StrokeStyle = "	RosyBrown";
+        context.lineJoin = "miter";
+        context.lineWidth = 5;
+        context.stroke();
         
         context.beginPath();
         context.moveTo(0, 0);
         context.lineTo(200*Math.cos(((75-second)%60)*6*Math.PI/180), -200*Math.sin(((75-second)%60)*6*Math.PI/180));
         context.strokeStyle = "SaddleBrown";
         context.lineWidth = 3;
+        context.shadowColor = "gray";
+        context.shadowBlur = 5;
+        context.shadowOffsetX = 8;
+        context.shadowOffsetY = 8;
         context.stroke();
 
         context.beginPath();
@@ -103,6 +122,10 @@
         context.lineTo(160*Math.cos((((75-minute)%60)*6-(6*second/60))*Math.PI/180), -160*Math.sin((((75-minute)%60)*6-(6*second/60))*Math.PI/180));
         context.strokeStyle = "			RosyBrown";
         context.lineWidth = 5;
+        context.shadowColor = "gray";
+        context.shadowBlur = 5;
+        context.shadowOffsetX = 8;
+        context.shadowOffsetY = 8;
         context.stroke();
 
         context.beginPath();
@@ -110,7 +133,15 @@
         context.lineTo(100*Math.cos((((15-hour)%12)*30-(30*minute/60))*Math.PI/180), -100*Math.sin((((15-hour)%12)*30-(30*minute/60))*Math.PI/180));
         context.strokeStyle = "			LightCoral";
         context.lineWidth = 8;
+        context.shadowColor = "gray";
+        context.shadowBlur = 5;
+        context.shadowOffsetX = 8;
+        context.shadowOffsetY = 8;
         context.stroke();
+        
+        context.font = "30px 隶书";
+        context.fillStyle = "Sienna";
+        context.fillText(year+"/"+month+"/"+day, -70, 106);
 
         context.restore();
     },1000)
