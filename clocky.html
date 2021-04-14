@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>阳阳私人订制♥</title>
+    <style>
+        canvas{
+            background:url(images/bg3.jpg) no-repeat center ;
+        }
+    </style>
 </head>
 <body>
     <canvas id="canvas" width="800" height="800"></canvas>
@@ -95,12 +100,12 @@
         var day = date.getDate();
 
         context.beginPath();
-        context.moveTo(-80, 70);
-        context.lineTo(80, 70);
+        context.moveTo(-80, 120);
         context.lineTo(80, 120);
+        context.lineTo(80, 170);
+        context.lineTo(-80, 170);
         context.lineTo(-80, 120);
-        context.lineTo(-80, 70);
-        context.lineTo(80, 70);
+        context.lineTo(80, 120);
         context.StrokeStyle = "	RosyBrown";
         context.lineJoin = "miter";
         context.lineWidth = 5;
@@ -130,9 +135,9 @@
         context.lineWidth = 8;
         context.stroke();
 
-        context.font = "30px 隶书";
-        context.fillStyle = "Sienna";
-        context.fillText(year+"/"+month+"/"+day, -70, 106);
+        context.font = "30px bold";
+        context.fillStyle = "LightSeaGreen";
+        context.fillText(year+"/"+month+"/"+day, -70, 156);
 
         context.restore();
     },1000)
